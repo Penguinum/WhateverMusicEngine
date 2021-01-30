@@ -15,15 +15,16 @@ class Engine {
 public:
     Engine(int sampleRate);
     void audioCallback(std::vector<std::vector<double>>&);
-    void setTonesRelation(std::vector<double> &relation);
     void setBaseNote(double base);
+    void tuneEqually(uint semitones);
+    double getNoteFrequency(int octave, uint8_t note);
     void tick(); // TODO: not void
 
 private:
     vector<shared_ptr<Module>> modules;
     vector<shared_ptr<Track>> tracks;
     uint8_t tonesPerOctave;
-    std::vector<double> tonesRelation;
+    vector<double> tonesRelation;
     double baseTone;
     double sampleRate;
     double bpm;
